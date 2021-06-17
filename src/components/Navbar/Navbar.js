@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { MenuItems } from './Menuitems';
-
+ 
 function Navbar() {
+let url="";
+const [show, setshow]= useState(false);
+
     return (
         <div>
             <nav className="bg-gray-100 w-full">
@@ -20,13 +23,16 @@ function Navbar() {
                             </div>
                         {/* primary navbar */}
                         <div className="hidden md:flex items-center space-x-1">
+                            {/* menu items  */}
                             {MenuItems.map((item,index)=>{
                                 return(
                                     <p key={index} href="{item.url}" className="py-5 px-3  text-gray-700 hover:text-gray-900 capitalize">{item.title}</p>
                                 )
                             })}
-                               <input class="w-40 h-10 rounded-sm p-3 outline-none border-solid  border border-indigo-500 placeholder-gray-600::placeholder"  type="text" placeholder="Search" />
-                            <p href="#" className="py-2 px-4 rounded-sm border-gray-600 border border-solid bg-indigo-600 text-lg text-indigo-100">Search</p>
+
+
+                         <input className="w-40 h-10 rounded-sm p-3 outline-none border-solid  border border-indigo-500 placeholder-gray-600::placeholder"  type="text" placeholder="Search" />
+                        <p href="#" className="py-2 px-4 rounded-sm border-gray-600 border border-solid bg-indigo-600 text-lg text-indigo-100">Search</p>
 
                         </div>
                         </div>
@@ -38,27 +44,24 @@ function Navbar() {
 
                         {/* mobile button goes here */}
                         <div className="md:hidden flex items-center">
-                                <button className="mobile-menu-button" onClick={()=>{}}>
+                                <button className="mobile-menu-button" onClick={()=> setshow(!show)}>
                                 <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                                 </svg>
                                 </button>
                          </div>
+
                     </div>
                 </div>
 
                 {/* mobile menu */}
-                <div className="mobile-menu hidden md:hidden">
 
-                {MenuItems.map((item,index)=>{
-                    return(
-                            <p key={index} href="{item.url}" className="py-5 px-3  text-gray-700 hover:text-gray-900 capitalize">{item.title}</p>
-                         )
-                    })}
-
-                    <p href="#" className="block py-2 px-4 text-sm hover:bg-gray-200">Sign In</p>
-                    <p href="#" className="block py-2 px-4 text-sm hover:bg-gray-200">Sign Up <i className=" pl-2 fas fa-arrow-right"></i></p>
-                </div>
+                {show ?  <div className="sm:hidden">
+                    <a href={url} className="block py-2 px-4 text-sm hover:bg-gray-200">Explore</a>
+                    <a href={url} className="block py-2 px-4 text-sm hover:bg-gray-200">New Notes</a>
+                    <a href={url} className="block py-2 px-4 text-sm hover:bg-gray-200">Sign In</a>
+                    <a href={url} className="block py-2 px-4 text-sm hover:bg-gray-200">Sign Up <i className=" pl-2 fas fa-arrow-right"></i></a>
+                </div> :null }
             </nav>
       </div>
     )

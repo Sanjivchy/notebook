@@ -10,6 +10,6 @@ export const MenuItems =[
     {
         title: 'New Notes',
         url:'#'
-    }
-    
+    },
+   
 ]
