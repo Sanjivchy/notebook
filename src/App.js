@@ -1,12 +1,14 @@
 import React from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Homepage from './components/Homepage/Homepage'
+import Footer from './components/Footer/Footer'
 
 function App() {
   return (
-    <div className="bg-gray-200 w-full h-screen">
+    <div>
       <Navbar/>
       <Homepage/>
+      <Footer/>
     </div>
   );
 }
